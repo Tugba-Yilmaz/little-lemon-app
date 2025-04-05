@@ -1,11 +1,86 @@
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 2rem;
+header {
+    background-color: white;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .header-container {
+    display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 5rem;
+  
   }
   
   .logo {
-    height: 60px;
+    height: 70px;
+   
+    align-self: flex-start;
   }
   
+  nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-content: flex-start;
+    
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  nav ul li a:hover {
+    color: #495e57;
+  }
+  
+  /* Burger icon */
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.burger span {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  border-radius: 2px;
+}
+
+/* Responsive Nav */
+@media (max-width: 768px) {
+  .burger {
+    display: flex;
+  }
+
+  nav {
+    display: none;
+    position: absolute;
+    top: 80px;
+    right: 30px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    z-index: 100;
+  }
+
+  nav.open {
+    display: block;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
