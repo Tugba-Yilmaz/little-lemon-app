@@ -40,3 +40,55 @@
 .read-the-docs {
   color: #888;
 }
+/* --- Senin mevcut App.css dosyan kalacak --- */
+
+/* --- Şimdi bunları en alta ekle --- */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fff;
+  color: #333;
+  text-align: center;
+}
+
+header {
+  padding: 20px;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  color: #495e57;
+}
+
+main {
+  padding: 40px 20px;
+}
+
+footer {
+  margin-top: 60px;
+  padding: 20px;
+  background-color: #f3f3f3;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+img {
+  max-width: 120px;
+  height: auto;
+}
+

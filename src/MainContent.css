@@ -1,0 +1,15 @@
+.main-content {
+    text-align: center;
+    padding: 60px 20px;
+  }
+  
+  .main-content h1 {
+    font-size: 48px;
+    color: #333;
+  }
+  
+  .main-content p {
+    font-size: 20px;
+    color: #666;
+  }
+    
