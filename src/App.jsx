@@ -1,15 +1,31 @@
 import React from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import NavBar from './components/NavBar';
-import Main from './MainContent';
+import Homepage from './components/Homepage';
+import BookingPage from './components/BookingPage';
+import AboutPage from './components/AboutPage';
+import MenuPage from './components/MenuPage';
+import OrderPage from './components/OrderPage';
+import LoginPage from './components/LoginPage';
 import Footer from './Footer';
 import './App.css';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
     <div className="container">
       <NavBar />
-      <Main />
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/menu" element={<MenuPage />} />
+        <Route path="/booking" element={<BookingPage />} />
+        <Route path="/order" element={<OrderPage />} />
+        <Route path="/login" element={<LoginPage />} />
+      </Routes>
       <Footer />
+      <ToastContainer />
     </div>
   );
 }

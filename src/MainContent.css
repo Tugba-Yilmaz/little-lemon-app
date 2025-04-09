@@ -214,3 +214,99 @@
     margin-bottom: 1rem;
   }
 }
+.chicago {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 4rem 2rem;
+  background-color: #fefefe;
+}
+
+.chicago-text {
+  flex: 1;
+  padding: 1rem;
+}
+
+.chicago-text h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.chicago-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.chicago-image {
+  flex: 1;
+  text-align: center;
+}
+
+.chicago-image img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.booking-section {
+  padding: 3rem 2rem;
+  background-color: #f8f8f8;
+  border-top: 1px solid #ddd;
+}
+
+.booking-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.booking-form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.booking-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  color: #333;
+}
+
+.booking-form input,
+.booking-form textarea {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.booking-form button {
+  padding: 0.75rem;
+  background-color: #f4ce14;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.booking-form button:hover {
+  background-color: #e2bb10;
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
+}
+
+.booking-form select {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-family: 'Karla', sans-serif;
+}

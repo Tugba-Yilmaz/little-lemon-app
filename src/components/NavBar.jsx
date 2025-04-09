@@ -1,6 +1,7 @@
 // src/components/NavBar.jsx
 import React, { useState } from 'react';
-import './NavBar.css'; // CSS kodlarını da birazdan vereceğim
+import { Link } from 'react-router-dom'; 
+import './NavBar.css';
 import logo from '../images/logo.svg';
 
 function NavBar() {
@@ -23,12 +24,12 @@ function NavBar() {
 
         <nav className={`nav-links ${isOpen ? 'open' : ''}`}>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Menu</a></li>
-            <li><a href="#">Reservations</a></li>
-            <li><a href="#">Order Online</a></li>
-            <li><a href="#">Login</a></li>
+            <li><Link to="/" onClick={() => setIsOpen(false)}>Home</Link></li>
+            <li><Link to="/about" onClick={() => setIsOpen(false)}>About</Link></li>
+            <li><Link to="/menu" onClick={() => setIsOpen(false)}>Menu</Link></li>
+            <li><Link to="/booking" onClick={() => setIsOpen(false)}>Reservations</Link></li>
+            <li><Link to="/order" onClick={() => setIsOpen(false)}>Order Online</Link></li>
+            <li><Link to="/login" onClick={() => setIsOpen(false)}>Login</Link></li>
           </ul>
         </nav>
       </div>
@@ -37,3 +38,4 @@ function NavBar() {
 }
 
 export default NavBar;
+
