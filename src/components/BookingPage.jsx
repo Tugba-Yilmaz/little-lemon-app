@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import '../MainContent.css';
+import { useNavigate } from 'react-router-dom';
 
-function BookingPage({ availableTimes, dispatch }) {
+
+function BookingPage({ availableTimes, dispatch, submitForm }) {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     date: '',
     time: '',
@@ -19,6 +23,7 @@ function BookingPage({ availableTimes, dispatch }) {
 
     if (name === 'date') {
       dispatch({ type: 'update', date: value });
+      setFormData(prev => ({ ...prev, time: '' }));
     }
   };
 
@@ -37,17 +42,18 @@ function BookingPage({ availableTimes, dispatch }) {
     e.preventDefault();
     const validationErrors = validate();
     setErrors(validationErrors);
-    if (Object.keys(validationErrors).length === 0) {
-      setSubmitted(true);
-      toast.success('Your reservation has been received 🎉');
-      console.log('Submitted:', formData);
 
-      setFormData({
-        date: '',
-        time: '',
-        guests: 1,
-        occasion: '',
-      });
+    if (Object.keys(validationErrors).length === 0) {
+      if (typeof submitForm === 'function') {
+        submitForm(formData); // Main içinde yönlendirme yapılır
+        setSubmitted(true);
+        toast.success('Your reservation has been received 🎉');
+        console.log('Submitted:', formData);
+
+        setFormData({ date: '', time: '', guests: 1, occasion: '' });
+      } else {
+        toast.error('submitForm is not available');
+      }
     }
   };
 
@@ -72,6 +78,7 @@ function BookingPage({ availableTimes, dispatch }) {
         <label htmlFor="time">
           Choose time:
           <select
+            key={availableTimes.join(",")}
             id="time"
             name="time"
             value={formData.time}
@@ -119,7 +126,9 @@ function BookingPage({ availableTimes, dispatch }) {
           </select>
         </label>
 
-        <button aria-label="Submit reservation form" type="submit">Make Your Reservation</button>
+        <button aria-label="Submit reservation form" type="submit">
+          Make Your Reservation
+        </button>
 
         {submitted && (
           <p style={{ marginTop: '1rem', color: 'green', fontWeight: 'bold' }} role="status">

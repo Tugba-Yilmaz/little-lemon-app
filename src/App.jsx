@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import NavBar from './components/NavBar';
@@ -11,24 +11,9 @@ import LoginPage from './components/LoginPage';
 import Footer from './Footer';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
+import ConfirmedBooking from "./components/ConfirmedBooking";
 
-// Booking saatlerini initialize eden fonksiyon
-const initializeTimes = () => {
-  return ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
-};
-
-// Reducer fonksiyonu: ileride tarih bazlı kontrol burada yapılabilir
-const updateTimes = (state, action) => {
-  if (action.type === 'update') {
-    // Simülasyon olarak aynı saatleri döndürüyoruz
-    return initializeTimes();
-  }
-  return state;
-};
-
-function App() {
-  const [availableTimes, dispatch] = useReducer(updateTimes, [], initializeTimes);
-
+function App({ availableTimes, dispatch, submitForm }) {
   return (
     <div className="container">
       <NavBar />
@@ -36,7 +21,17 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/menu" element={<MenuPage />} />
-        <Route path="/booking" element={<BookingPage availableTimes={availableTimes} dispatch={dispatch} />} />
+        <Route
+          path="/booking"
+          element={
+            <BookingPage
+              availableTimes={availableTimes}
+              dispatch={dispatch}
+              submitForm={submitForm}
+            />
+          }
+        />
+        <Route path="/confirmed" element={<ConfirmedBooking />} />
         <Route path="/order" element={<OrderPage />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>

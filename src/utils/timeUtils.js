@@ -1,10 +1,29 @@
 // src/utils/timeUtils.js
 
 export const initializeTimes = () => {
-  return ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+  const today = new Date();
+
+  if (typeof window.fetchAPI === "function") {
+    console.log("initializeTimes çalıştı:", today.toDateString());
+    return window.fetchAPI(today);
+  } else {
+    console.error("fetchAPI is not defined!");
+    return [];
+  }
 };
 
 export const updateTimes = (state, action) => {
-  // Şimdilik hep aynı listeyi döndür, ileride date'e göre güncelleme yapılabilir
-  return initializeTimes();
+  if (action.type === "update") {
+    const selectedDate = new Date(action.date);
+
+    if (typeof window.fetchAPI === "function") {
+      console.log("updateTimes çalıştı:", selectedDate.toDateString());
+      return window.fetchAPI(selectedDate);
+    } else {
+      console.error("fetchAPI is not defined!");
+      return state;
+    }
+  }
+
+  return state;
 };
