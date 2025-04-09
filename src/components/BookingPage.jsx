@@ -54,46 +54,59 @@ function BookingPage({ availableTimes, dispatch }) {
   return (
     <section className="booking-section">
       <h2>Reserve a Table</h2>
-      <form className="booking-form" onSubmit={handleSubmit}>
+      <form className="booking-form" onSubmit={handleSubmit} aria-label="Reservation Form">
 
-        <label>
+        <label htmlFor="date">
           Choose date:
           <input
+            id="date"
             type="date"
             name="date"
             value={formData.date}
             onChange={handleChange}
+            aria-required="true"
           />
-          {errors.date && <span className="error">{errors.date}</span>}
+          {errors.date && <span className="error" role="alert">{errors.date}</span>}
         </label>
 
-        <label>
+        <label htmlFor="time">
           Choose time:
-          <select name="time" value={formData.time} onChange={handleChange}>
+          <select
+            id="time"
+            name="time"
+            value={formData.time}
+            onChange={handleChange}
+            aria-required="true"
+          >
             <option value="">-- Select Time --</option>
             {availableTimes.map((time, idx) => (
               <option key={idx} value={time}>{time}</option>
             ))}
           </select>
-          {errors.time && <span className="error">{errors.time}</span>}
+          {errors.time && <span className="error" role="alert">{errors.time}</span>}
         </label>
 
-        <label>
+        <label htmlFor="guests">
           Number of guests:
           <input
+            id="guests"
             type="number"
             name="guests"
             min="1"
             max="10"
             value={formData.guests}
             onChange={handleChange}
+            aria-required="true"
+            aria-describedby="guests-help"
           />
-          {errors.guests && <span className="error">{errors.guests}</span>}
+          <small id="guests-help">You can book for up to 10 guests.</small>
+          {errors.guests && <span className="error" role="alert">{errors.guests}</span>}
         </label>
 
-        <label>
+        <label htmlFor="occasion">
           Occasion:
           <select
+            id="occasion"
             name="occasion"
             value={formData.occasion}
             onChange={handleChange}
@@ -106,10 +119,10 @@ function BookingPage({ availableTimes, dispatch }) {
           </select>
         </label>
 
-        <button type="submit">Make Your Reservation</button>
+        <button aria-label="Submit reservation form" type="submit">Make Your Reservation</button>
 
         {submitted && (
-          <p style={{ marginTop: '1rem', color: 'green', fontWeight: 'bold' }}>
+          <p style={{ marginTop: '1rem', color: 'green', fontWeight: 'bold' }} role="status">
             Thank you! Your reservation has been received ✅
           </p>
         )}
