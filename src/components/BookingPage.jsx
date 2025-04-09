@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
-
 import '../MainContent.css';
 
-function BookingPage() {
+function BookingPage({ availableTimes, dispatch }) {
   const [formData, setFormData] = useState({
-    name: '',
     date: '',
     time: '',
     guests: 1,
-    note: '',
-    occasion: ''
+    occasion: '',
   });
 
   const [submitted, setSubmitted] = useState(false);
@@ -18,20 +15,21 @@ function BookingPage() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
+
+    if (name === 'date') {
+      dispatch({ type: 'update', date: value });
+    }
   };
 
   const validate = () => {
     const newErrors = {};
-    const today = new Date().toISOString().split("T")[0];
-
-    if (!formData.name.trim()) newErrors.name = "Name is required.";
-    if (!formData.date) newErrors.date = "Date is required.";
-    else if (formData.date < today) newErrors.date = "Date cannot be in the past.";
-    if (!formData.time) newErrors.time = "Time is required.";
+    const today = new Date().toISOString().split('T')[0];
+    if (!formData.date) newErrors.date = 'Date is required';
+    else if (formData.date < today) newErrors.date = 'Date cannot be in the past';
+    if (!formData.time) newErrors.time = 'Time is required';
     if (formData.guests < 1 || formData.guests > 10)
-      newErrors.guests = "Guests must be between 1 and 10.";
-
+      newErrors.guests = 'Guests must be between 1 and 10';
     return newErrors;
   };
 
@@ -39,21 +37,16 @@ function BookingPage() {
     e.preventDefault();
     const validationErrors = validate();
     setErrors(validationErrors);
-
     if (Object.keys(validationErrors).length === 0) {
       setSubmitted(true);
-      console.log("Reservation confirmed ✅:", formData);
+      toast.success('Your reservation has been received 🎉');
+      console.log('Submitted:', formData);
 
-      toast.success("Your reservation has been received 🎉");
-
-      // reset form data
       setFormData({
-        name: '',
         date: '',
         time: '',
         guests: 1,
-        note: '',
-        occasion: ''
+        occasion: '',
       });
     }
   };
@@ -64,18 +57,7 @@ function BookingPage() {
       <form className="booking-form" onSubmit={handleSubmit}>
 
         <label>
-          Name:
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-          />
-          {errors.name && <span className="error">{errors.name}</span>}
-        </label>
-
-        <label>
-          Date:
+          Choose date:
           <input
             type="date"
             name="date"
@@ -86,18 +68,18 @@ function BookingPage() {
         </label>
 
         <label>
-          Time:
-          <input
-            type="time"
-            name="time"
-            value={formData.time}
-            onChange={handleChange}
-          />
+          Choose time:
+          <select name="time" value={formData.time} onChange={handleChange}>
+            <option value="">-- Select Time --</option>
+            {availableTimes.map((time, idx) => (
+              <option key={idx} value={time}>{time}</option>
+            ))}
+          </select>
           {errors.time && <span className="error">{errors.time}</span>}
         </label>
 
         <label>
-          Number of Guests:
+          Number of guests:
           <input
             type="number"
             name="guests"
@@ -110,34 +92,24 @@ function BookingPage() {
         </label>
 
         <label>
-          Special Note:
-          <textarea
-            name="note"
-            value={formData.note}
+          Occasion:
+          <select
+            name="occasion"
+            value={formData.occasion}
             onChange={handleChange}
-            placeholder="Optional"
-          ></textarea>
+          >
+            <option value="">-- Select Occasion --</option>
+            <option value="Birthday">Birthday</option>
+            <option value="Anniversary">Anniversary</option>
+            <option value="Business Meeting">Business Meeting</option>
+            <option value="Other">Other</option>
+          </select>
         </label>
-        <label>
-  Are you celebrating something?
-  <select
-    name="occasion"
-    value={formData.occasion}
-    onChange={handleChange}
-  >
-    <option value="">-- Select an Occasion --</option>
-    <option value="Birthday">Birthday</option>
-    <option value="Anniversary">Anniversary</option>
-    <option value="Business Meeting">Business Meeting</option>
-    <option value="Other">Other</option>
-  </select>
-</label>
 
-
-        <button type="submit">Book Now</button>
+        <button type="submit">Make Your Reservation</button>
 
         {submitted && (
-          <p style={{ marginTop: "1rem", color: "green", fontWeight: "bold" }}>
+          <p style={{ marginTop: '1rem', color: 'green', fontWeight: 'bold' }}>
             Thank you! Your reservation has been received ✅
           </p>
         )}
