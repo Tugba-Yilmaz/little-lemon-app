@@ -1,29 +1,33 @@
 /**
  * @vitest-environment jsdom
  */
-import { describe, it, expect } from "vitest";
-import { initializeTimes, updateTimes } from "./timeUtils";
+import { describe, it, expect, vi, beforeEach } from "vitest";
+import { initializeTimes, updateTimes } from "../utils/timeUtils";
+
+beforeEach(() => {
+  // fetchAPI fonksiyonunu sahte olarak tanımlıyoruz
+  window.fetchAPI = vi.fn((date) => {
+    return ["17:00", "18:00", "19:00"];
+  });
+});
 
 describe("initializeTimes", () => {
-  it("should return the initial time slots", () => {
+  it("fetchAPI çağrıldığında saatleri döndürür", () => {
     const times = initializeTimes();
-    expect(times).toEqual([
-      "17:00",
-      "18:00",
-      "19:00",
-      "20:00",
-      "21:00",
-      "22:00",
-    ]);
+
+    expect(window.fetchAPI).toHaveBeenCalled();
+    expect(Array.isArray(times)).toBe(true);
+    expect(times.length).toBeGreaterThan(0);
   });
 });
 
 describe("updateTimes", () => {
-  it("should return the same time slots regardless of date", () => {
-    const initialState = initializeTimes();
+  it("should call fetchAPI with provided date", () => {
     const action = { type: "update", date: "2025-04-10" };
+    const result = updateTimes([], action);
 
-    const updated = updateTimes(initialState, action);
-    expect(updated).toEqual(initialState);
+    expect(window.fetchAPI).toHaveBeenCalledWith(new Date("2025-04-10"));
+    expect(Array.isArray(result)).toBe(true);
+    expect(result).toEqual(["17:00", "18:00", "19:00"]); // mock sonucu
   });
 });

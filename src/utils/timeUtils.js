@@ -2,7 +2,6 @@
 
 export const initializeTimes = () => {
   const today = new Date();
-
   if (typeof window.fetchAPI === "function") {
     console.log("initializeTimes çalıştı:", today.toDateString());
     return window.fetchAPI(today);
@@ -15,7 +14,6 @@ export const initializeTimes = () => {
 export const updateTimes = (state, action) => {
   if (action.type === "update") {
     const selectedDate = new Date(action.date);
-
     if (typeof window.fetchAPI === "function") {
       console.log("updateTimes çalıştı:", selectedDate.toDateString());
       return window.fetchAPI(selectedDate);

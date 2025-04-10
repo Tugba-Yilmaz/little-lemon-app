@@ -19,12 +19,19 @@ const MainWithRouter = ({ availableTimes, dispatch }) => {
     if (typeof window.submitAPI === "function") {
       const success = window.submitAPI(formData);
       if (success) {
+        // ✅ 1. localStorage'a kayıt
+        const saved = JSON.parse(localStorage.getItem("reservations")) || [];
+        saved.push(formData);
+        localStorage.setItem("reservations", JSON.stringify(saved));
+  
+        // ✅ 2. yönlendirme
         navigate("/confirmed");
       } else {
         alert("Something went wrong. Please try again.");
       }
     }
   };
+  
 
   return (
     <App
