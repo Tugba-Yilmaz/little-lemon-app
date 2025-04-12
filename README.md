@@ -1,12 +1,37 @@
-# React + Vite
+# 🥗 Little Lemon App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the **Little Lemon App**, a responsive and interactive React application developed as part of the Meta Front-End Developer curriculum. This app simulates an online restaurant experience, allowing users to view menu items and make reservations seamlessly.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- 🍽️ Interactive reservation form  
+- ⏱️ Dynamic booking times fetched via API  
+- 📱 Fully responsive design for all screen sizes  
+- ⚛️ React components and state management with `useState` and `useReducer`  
+- ✅ Form validation with both HTML5 and React  
+- 🧪 Unit testing with Vitest  
+- 🔗 Routing with React Router  
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tech Stack
+
+- **Framework:** React (with Vite)  
+- **Styling:** Custom CSS  
+- **Routing:** React Router  
+- **State Management:** useState, useReducer  
+- **Testing:** Vitest  
+- **Build Tool:** Vite  
+
+---
+
+## 📦 Installation
+
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/Tugba-Yilmaz/little-lemon-app.git
+cd little-lemon-app
+npm install
