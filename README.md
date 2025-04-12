@@ -3,6 +3,9 @@
 Welcome to the **Little Lemon App**, a responsive and interactive React application developed as part of the Meta Front-End Developer curriculum. This app simulates an online restaurant experience, allowing users to view menu items and make reservations seamlessly.
 
 ---
+## 🌐 Live Demo
+
+👉 [View Live App on Vercel](https://little-lemon-app-wine.vercel.app)
 
 ## 🚀 Features
 
