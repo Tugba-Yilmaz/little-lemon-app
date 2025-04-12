@@ -1,11 +1,11 @@
-/* Genel NavBar stili */
+
 .navbar {
   background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   width: 100%;
 }
 
-/* İçerik hizalayıcı */
+
 .navbar-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -15,12 +15,12 @@
   align-items: center;
 }
 
-/* Logo */
+
 .logo {
   height: 60px;
 }
 
-/* Hamburger butonu */
+
 .burger {
   display: none;
   flex-direction: column;
@@ -38,7 +38,7 @@
   transition: all 0.3s ease-in-out;
 }
 
-/* Navigation linkleri */
+
 .nav-links {
   display: flex;
   gap: 2rem;

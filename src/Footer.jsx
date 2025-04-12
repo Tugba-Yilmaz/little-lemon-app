@@ -1,21 +1,21 @@
-// src/Footer.jsx
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.css';
-import logo from './images/logo.svg'; // logo dosyan varsa
+import logo from './images/logo.svg';
 
 function Footer() {
   return (
     <footer className="footer">
       <div className="footer-container">
         
-        {/* Logo ve açıklama */}
+      
         <div className="footer-section">
           <img src={logo} alt="Little Lemon Logo" className="footer-logo" />
           <p>Your favorite Mediterranean restaurant in the heart of Chicago.</p>
         </div>
 
-        {/* Sayfa Linkleri */}
+       
         <div className="footer-section">
           <h4>Doormat Navigation</h4>
           <ul>
@@ -28,7 +28,6 @@ function Footer() {
           </ul>
         </div>
 
-        {/* İletişim */}
         <div className="footer-section">
           <h4>Contact</h4>
           <p>123 Main Street, Chicago</p>
@@ -36,7 +35,7 @@ function Footer() {
           <p>contact@littlelemon.com</p>
         </div>
 
-        {/* Sosyal Medya */}
+        
         <div className="footer-section">
           <h4>Social Media</h4>
           <ul className="social-links">

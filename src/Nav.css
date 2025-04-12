@@ -3,7 +3,7 @@ nav {
     align-items: center;
     justify-content: space-between;
     padding: 16px 32px;
-    background-color: #fff; /* veya #f4f4f4 */
+    background-color: #fff; 
   }
   
   .logo {
@@ -25,6 +25,6 @@ nav {
   }
   
   .nav-links a:hover {
-    color: #495E57; /* Little Lemon rengi */
+    color: #495E57; /* Little Lemon */
   }
   

@@ -14,7 +14,7 @@ describe("NavBar Component", () => {
       </BrowserRouter>
     );
 
-    // Navigasyon linklerinin içerikte yer alıp almadığını test et
+
     expect(screen.getByText(/home/i)).toBeInTheDocument();
     expect(screen.getByText(/about/i)).toBeInTheDocument();
     expect(screen.getByText(/menu/i)).toBeInTheDocument();

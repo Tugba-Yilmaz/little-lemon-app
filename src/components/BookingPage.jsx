@@ -17,6 +17,18 @@ function BookingPage({ availableTimes, dispatch, submitForm }) {
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
 
+  const isFormValid = () => {
+    const today = new Date().toISOString().split("T")[0];
+    return (
+      formData.date &&
+      formData.date >= today &&
+      formData.time &&
+      formData.guests >= 1 &&
+      formData.guests <= 10
+    );
+  };
+  
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -45,7 +57,7 @@ function BookingPage({ availableTimes, dispatch, submitForm }) {
 
     if (Object.keys(validationErrors).length === 0) {
       if (typeof submitForm === 'function') {
-        submitForm(formData); // Main içinde yönlendirme yapılır
+        submitForm(formData); 
         setSubmitted(true);
         toast.success('Your reservation has been received 🎉');
         console.log('Submitted:', formData);
@@ -70,6 +82,8 @@ function BookingPage({ availableTimes, dispatch, submitForm }) {
             name="date"
             value={formData.date}
             onChange={handleChange}
+            required
+            min={new Date().toISOString().split("T")[0]} 
             aria-required="true"
           />
           {errors.date && <span className="error" role="alert">{errors.date}</span>}
@@ -83,6 +97,7 @@ function BookingPage({ availableTimes, dispatch, submitForm }) {
             name="time"
             value={formData.time}
             onChange={handleChange}
+            required
             aria-required="true"
           >
             <option value="">-- Select Time --</option>
@@ -101,6 +116,7 @@ function BookingPage({ availableTimes, dispatch, submitForm }) {
             name="guests"
             min="1"
             max="10"
+            required
             value={formData.guests}
             onChange={handleChange}
             aria-required="true"
@@ -126,8 +142,7 @@ function BookingPage({ availableTimes, dispatch, submitForm }) {
           </select>
         </label>
 
-        <button aria-label="Submit reservation form" type="submit">
-          Make Your Reservation
+        <button aria-label="Submit reservation form" type="submit" disabled={!isFormValid()}>      Make Your Reservation
         </button>
 
         {submitted && (

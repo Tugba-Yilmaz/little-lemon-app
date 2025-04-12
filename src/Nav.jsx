@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Link bileşenini import et
+import { Link } from 'react-router-dom'; 
 import './Nav.css';
 
 function Nav() {

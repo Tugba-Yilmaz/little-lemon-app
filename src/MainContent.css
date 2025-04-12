@@ -1,4 +1,4 @@
-/* Genel main content stilleri (gerekirse) */
+/*  main content */
 .main-content {
   font-family: 'Karla', sans-serif;
   text-align: center;
@@ -21,7 +21,7 @@
   line-height: 1.6;
 }
 
-/* Hero özel stilleri */
+/* Hero  */
 .hero {
   background-color: #495e57;
   color: white;
@@ -92,7 +92,7 @@
   }
 }
 
-/* Specials özel stilleri */
+/* Specials*/
 .specials {
   padding: 4rem 5rem;
   background-color: #fff;

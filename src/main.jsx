@@ -6,12 +6,11 @@ import './index.css';
 
 import { initializeTimes, updateTimes } from './utils/timeUtils';
 
-// Reducer fonksiyonu
 const reducer = (state, action) => {
   return updateTimes(state, action);
 };
 
-// useNavigate Router içinde çalıştığı için ayrı bileşen olarak yazıyoruz
+
 const MainWithRouter = ({ availableTimes, dispatch }) => {
   const navigate = useNavigate();
 
@@ -19,12 +18,12 @@ const MainWithRouter = ({ availableTimes, dispatch }) => {
     if (typeof window.submitAPI === "function") {
       const success = window.submitAPI(formData);
       if (success) {
-        // ✅ 1. localStorage'a kayıt
+        
         const saved = JSON.parse(localStorage.getItem("reservations")) || [];
         saved.push(formData);
         localStorage.setItem("reservations", JSON.stringify(saved));
   
-        // ✅ 2. yönlendirme
+        
         navigate("/confirmed");
       } else {
         alert("Something went wrong. Please try again.");
