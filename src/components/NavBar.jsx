@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; 
 import './NavBar.css';
-//import logo from '../images/logo.svg';
+import logo from '../images/Logo.svg';
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
